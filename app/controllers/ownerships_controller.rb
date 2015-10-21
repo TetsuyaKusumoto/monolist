@@ -12,7 +12,10 @@ class OwnershipsController < ApplicationController
     if @item.new_record?
       begin
         # TODO 商品情報の取得 Amazon::Ecs.item_lookupを用いてください
-        response = {}
+        response = Amazon::Ecs.item_lookup(params[:asin] ,
+                                  :search_index => 'All' ,
+                                  :response_group => 'Medium' ,
+                                  :country => 'jp')
       rescue Amazon::RequestError => e
         return render :js => "alert('#{e.message}')"
       end
@@ -31,7 +34,12 @@ class OwnershipsController < ApplicationController
     # params[:type]の値ににHaveボタンが押された時には「Have」,
     # Wantボタンがされた時には「Want」が設定されています。
     
-
+    binding.pry
+    if params[:type] = 'Have'
+      current_user.have(@item) 
+    else
+      current_user.want(@item)
+    end
   end
 
   def destroy
