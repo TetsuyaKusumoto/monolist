@@ -4,12 +4,22 @@
       <div class="image">
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
+          <% @url = @item.large_image %>
+          <% if @url.present? %>
+            <%= image_tag(@url , alt: @item.title) %>
+          <% else %>
+            <%= image_tag("no-image.png" , alt: @item.title) %>
+          <% end %>
         </div>
       </div>
       <div class="title">
         <% #TODO 商品タイトル %>
-        仮タイトル
+        <% @title = @item.title %>
+        <% if @title.present? %>
+          <%= @title %> 
+        <% else %>
+          no title
+        <% end %>
       </div>
       <%= render 'action' , item: @item %>
     </div>
