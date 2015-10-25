@@ -28,6 +28,23 @@
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                    ランキング
+                  </span>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to "Have" , have_ranking_path  %>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <%= link_to "Want", want_ranking_path  %>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <span class="gravatar">
                     <%= gravatar_for current_user , size: 20 %>
                   </span>
